@@ -18,23 +18,24 @@ const AllPosts = () => {
         useEffect(() => {
             getPosts();
         }, [])
-        console.log(posts)
+        
+
     return(
-       
-        <div id="all-posts">
+    <div id="all-posts">
             <h1>All posts</h1>
-            
+            {/* <Link to="new-article"><button>Post new article</button></Link> */}
             {
-                
-                   
+                posts.length ? posts.map((post, idx) =>{
+                   return (
                     <div key={idx}>
-                      <div>{post[0].title}</div>  
+                        <h3>{post.title}</h3>
+                        {/* <Link to={`${post.id}`}><h3>{post.title}</h3></Link> */}
                     </div>
-                    
-                }  
-            
+                    )
+                }) : null
+            }
         </div>
     )
 
-        }
+}
 export default AllPosts
