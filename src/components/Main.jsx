@@ -6,6 +6,7 @@ const Main = () => {
     return(
         <div id="main">
             <Navbar />
+            <div>I am in main</div>
             <AllPosts />
         </div>
     )

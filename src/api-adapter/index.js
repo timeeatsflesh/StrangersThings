@@ -1,4 +1,4 @@
-const BASE_URL = "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft/posts"
+const BASE_URL = "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft"
 
 export const getFakePosts =  async () => {
     // try{
@@ -12,11 +12,10 @@ export const getFakePosts =  async () => {
 	// }
     
     try{
-        const response = await fetch(BASE_URL, {
-            method: "GET",
-        });
+        const response = await fetch(`${BASE_URL}/posts`)
         const result = await response.json();
-		return result;
+        const posts = result.data
+		return posts;
 	} catch (error) {
 		console.log(error);
 	}
