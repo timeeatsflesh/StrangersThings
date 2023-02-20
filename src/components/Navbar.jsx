@@ -1,4 +1,5 @@
 import React from "react";
+import { Register } from "../api-adapter";
 
 const Navbar = () => {
   return (

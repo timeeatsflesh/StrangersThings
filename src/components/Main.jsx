@@ -1,6 +1,6 @@
 import React from "react";
 import { Navbar } from "./";
-import { AllPosts } from "./"
+import { AllPosts, Register } from "./"
 
 const Main = () => {
     return(
