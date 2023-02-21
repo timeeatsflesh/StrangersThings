@@ -20,8 +20,10 @@ export const sendUser = async (username, password) => {
 		const response = await fetch(`${BASE_URL}/users/login`, {
 			method: "POST",
 			body: JSON.stringify({
+        user: {
 				username: `${username}`,
 				password: `${password}`,
+        }
 			}),
 			headers: {
 				"Content-type": "application/json; charset=UTF-8",
@@ -36,23 +38,25 @@ export const sendUser = async (username, password) => {
 	}
 };
 
+export const newUser = async (newUsername, newPassword) => {
+	try {
+		const response = await fetch(`${BASE_URL}/users/register`, {
+			method: "POST",
+			body: JSON.stringify({
+        user: {
+				username: `${newUsername}`,
+				password: `${newPassword}`,
+        }
+			}),
+			headers: {
+				"Content-type": "application/json; charset=UTF-8",
+			},
+		});
 
-
-
-
-fetch(`${BASE_URL}/users/login`, {
-  method: "POST",
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    user: {
-      username: 'victorlaurarober',
-      password: 'shoes15'
-    }
-  })
-}).then(response => response.json())
-  .then(result => {
-    console.log(result);
-  })
-  .catch(console.error);
+		const result = await response.json();
+    console.log(result)
+		return result;
+	} catch (error) {
+		console.log(error);
+	}
+};
