@@ -18,7 +18,6 @@ const AllPosts = () => {
         useEffect(() => {
             getPosts();
         }, [])
-        console.log(posts)
 
     return(
     <div id="all-posts">
