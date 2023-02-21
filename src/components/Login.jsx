@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { sendUser } from '../api-adapter';
 import { Link } from 'react-router-dom';
+import { Status } from './'
 
 function Login() {
   let [username, setUsername] = useState("");
@@ -44,7 +45,7 @@ function Login() {
         Password:
         <input
           name="password"
-          type="password"
+          type="text"
           value={password}
           onChange={(event) => {
             setPassword(event.target.value);
