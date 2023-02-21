@@ -7,6 +7,7 @@ const Main = () => {
         <div id="main">
             <Navbar />
             <div>I am in main</div>
+            <Register />
             <AllPosts />
         </div>
     )
