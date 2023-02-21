@@ -21,8 +21,8 @@ export const sendUser = async (username, password) => {
 			method: "POST",
 			body: JSON.stringify({
         user: {
-				username: `${username}`,
-				password: `${password}`,
+				username: username,
+				password: password,
         }
 			}),
 			headers: {
@@ -44,8 +44,8 @@ export const newUser = async (newUsername, newPassword) => {
 			method: "POST",
 			body: JSON.stringify({
         user: {
-				username: `${newUsername}`,
-				password: `${newPassword}`,
+				username: newUsername,
+				password: newPassword,
         }
 			}),
 			headers: {

@@ -14,15 +14,21 @@ function Login() {
       setResponse(result);
       setUsername('');
       setPassword('');
+      // localStorage.setItem("token", JSON.stringify(response.data.token));
     } catch (error) {
       console.log(error);
     }
   }
 
   useEffect(() => {
-    localStorage.setItem("token", JSON.stringify(response.data.token));
-    console.log(localStorage.token, "response here")
-  }, [response.data.token]);
+    // let token = response.data.token
+    if(response !== undefined){
+      localStorage.setItem("token", JSON.stringify(response.data.token));
+      console.log(localStorage)
+
+    }
+    
+  }, ["token", response.data.token]);
 
   return (
     <form
