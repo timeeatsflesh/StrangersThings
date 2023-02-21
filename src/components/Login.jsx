@@ -20,8 +20,9 @@ function Login() {
   }
 
   useEffect(() => {
-    localStorage.setItem(response.username, response.password);
-  }, [response.username, response.password]);
+    localStorage.setItem("token", JSON.stringify(response.data.token));
+    console.log(localStorage.token, "response here")
+  }, [response.data.token]);
 
   return (
     <form
@@ -54,6 +55,12 @@ function Login() {
       </label>
       <button type="submit">Login</button>
       {/* <Link to="/">Go back</Link> */}
+
+      <label>
+        
+      </label>
+      <button type="submit">Logout</button>
+      
     </form>
   );
 }
