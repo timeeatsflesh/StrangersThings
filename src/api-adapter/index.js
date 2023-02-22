@@ -60,19 +60,19 @@ export const newUser = async (newUsername, newPassword) => {
 		console.log(error);
 	}
 };
-export const sendNewPost = async (title, description, price, willDeliver)
-fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts', {
+
+export const createNewPost = async (title, description, price) => {
+fetch(`${BASE_URL}/posts`, {
   method: "POST",
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer TOKEN_STRING_HERE'
+    'Authorization': `Bearer ${localStorage.getItem("token")}`
   },
   body: JSON.stringify({
     post: {
       title: title,
       description: description,
       price: price,
-      willDeliver: false
     }
   })
 }).then(response => response.json())
@@ -80,3 +80,17 @@ fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts', {
     console.log(result);
   })
   .catch(console.error);
+}
+
+export const getMessages = async () =>{
+fetch(`${BASE_URL}/users/me`, {
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem("token")}`
+  },
+}).then(response => response.json())
+  .then(result => {
+    console.log(result);
+  })
+  .catch(console.error);
+}

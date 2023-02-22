@@ -22,13 +22,13 @@ const AllPosts = () => {
     return(
     <div id="all-posts">
             <h1>All posts</h1>
-            <Link to="new-article"><button>Post new article</button></Link>
+            <Link to="/NewPost"><button>Post new article</button></Link>
             {
                 posts.length ? posts.map((post, idx) =>{
                    return (
                     <div key={idx}>
                         <h3>{post.title}</h3>
-                        <h3>{post._id}</h3>
+                        <p>{post.description}</p>
                         {/* <Link to={`${post.id}`}><h3>{post.title}</h3></Link> */}
                     </div>
                     )

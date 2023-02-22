@@ -52,7 +52,7 @@ function Register() {
           />
         </label>
         <button type="submit">Register</button>
-        {/* <Link to="/">Go back</Link> */}
+        <Link to="/">Go back</Link>
       </form>
     );
   }

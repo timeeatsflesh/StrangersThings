@@ -52,13 +52,11 @@ function Login() {
         />
       </label>
       <button type="submit">Login</button>
-      {/* <Link to="/">Go back</Link> */}
-
       <label>
         
       </label>
       <button onClick={() => Logout()}>Logout</button>
-      
+      <Link to="/">Go back</Link>
     </form>
   );
 }
