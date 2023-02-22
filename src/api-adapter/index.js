@@ -60,3 +60,23 @@ export const newUser = async (newUsername, newPassword) => {
 		console.log(error);
 	}
 };
+export const sendNewPost = async (title, description, price, willDeliver)
+fetch('https://strangers-things.herokuapp.com/api/COHORT-NAME/posts', {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer TOKEN_STRING_HERE'
+  },
+  body: JSON.stringify({
+    post: {
+      title: title,
+      description: description,
+      price: price,
+      willDeliver: false
+    }
+  })
+}).then(response => response.json())
+  .then(result => {
+    console.log(result);
+  })
+  .catch(console.error);
