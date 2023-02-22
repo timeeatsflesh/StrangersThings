@@ -82,15 +82,17 @@ fetch(`${BASE_URL}/posts`, {
   .catch(console.error);
 }
 
-export const getMessages = async () =>{
-fetch(`${BASE_URL}/users/me`, {
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem("token")}`
-  },
-}).then(response => response.json())
-  .then(result => {
-    console.log(result);
-  })
-  .catch(console.error);
+export const getMessages = async () => {
+	try {
+	let response = await fetch(`${BASE_URL}/users/me`, {
+		  headers: {
+		    'Content-Type': 'application/json',
+		    'Authorization': `Bearer ${localStorage.getItem("token")}`
+		  },
+		})
+		const result = await response.json();
+		return result;
+	} catch (error) {
+		console.log(error);
+	}
 }
