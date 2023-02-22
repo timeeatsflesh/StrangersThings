@@ -32,7 +32,7 @@ export const sendUser = async (username, password) => {
 
 		const result = await response.json();
     console.log(result)
-		return result;
+		return result.data.token;
 	} catch (error) {
 		console.log(error);
 	}

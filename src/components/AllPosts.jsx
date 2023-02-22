@@ -28,6 +28,7 @@ const AllPosts = () => {
                    return (
                     <div key={idx}>
                         <h3>{post.title}</h3>
+                        <h3>{post._id}</h3>
                         {/* <Link to={`${post.id}`}><h3>{post.title}</h3></Link> */}
                     </div>
                     )

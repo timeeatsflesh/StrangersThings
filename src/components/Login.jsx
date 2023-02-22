@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { sendUser } from '../api-adapter';
 import { Link } from 'react-router-dom';
 import { Status } from './'
@@ -6,29 +6,21 @@ import { Status } from './'
 function Login() {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
-  let [response, setResponse] = useState({});
+
+  function Logout() {
+    localStorage.removeItem(token)
+  }
 
   async function sendLogin(username, password) {
     try {
       const result = await sendUser(username, password);
-      setResponse(result);
+      localStorage.setItem("token", result)
       setUsername('');
       setPassword('');
-      // localStorage.setItem("token", JSON.stringify(response.data.token));
     } catch (error) {
       console.log(error);
     }
   }
-
-  useEffect(() => {
-    // let token = response.data.token
-    if(response !== undefined){
-      localStorage.setItem("token", JSON.stringify(response.data.token));
-      console.log(localStorage)
-
-    }
-    
-  }, ["token", response.data.token]);
 
   return (
     <form
@@ -65,7 +57,7 @@ function Login() {
       <label>
         
       </label>
-      <button type="submit">Logout</button>
+      <button onClick={() => Logout()}>Logout</button>
       
     </form>
   );
