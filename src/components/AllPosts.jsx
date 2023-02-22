@@ -22,7 +22,7 @@ const AllPosts = () => {
     return(
     <div id="all-posts">
             <h1>All posts</h1>
-            {/* <Link to="new-article"><button>Post new article</button></Link> */}
+            <Link to="new-article"><button>Post new article</button></Link>
             {
                 posts.length ? posts.map((post, idx) =>{
                    return (

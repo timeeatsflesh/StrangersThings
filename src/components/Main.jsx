@@ -2,16 +2,16 @@ import React from "react";
 import { Navbar } from "./";
 import { AllPosts, Login } from "./"
 import Register from "./Register";
-
+import { Outlet } from "react-router-dom";
 
 const Main = () => {
     return(
         <div id="main">
             <Navbar />
-            <div>I am in main</div>
-            <AllPosts />
-            <Login />
-            <Register />
+            <Outlet />
+            {/* <Login /> */}
+            {/* <AllPosts /> */}
+            {/* <Register /> */}
         </div>
     )
 }
