@@ -18,12 +18,13 @@ const AllPosts = () => {
         useEffect(() => {
             getPosts();
         }, [])
-console.log(posts)  
+console.log(posts) 
+ 
     return(
     <div id="all-posts">
             <h1>All posts</h1>
             <Link to="/new-post"><button>Post new article</button></Link>
-            <Link to="/create-message"><button>Ask Seller</button></Link>
+            
             {
                 posts.length ? posts.map((post, idx) =>{
                    return (
