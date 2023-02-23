@@ -1,16 +1,21 @@
 import React, { useState, useEffect } from "react";
 import { getMessages } from "../api-adapter";
+import { Link } from "react-router-dom";
 
 const Messages = () => {
-    const [Messages, setMessages] = useState('')
+    const [Messages, setMessages] = useState({})
     const [fromUser, setFromUser] = useState('')
+
+    function Logout() {
+        localStorage.removeItem("username")
+      }
+
     const receiveMessages = async () => {
         try{
             const result = await getMessages();
-            console.log(result.data.username)
-            localStorage.setItem(result.data.username);
-            setMessages(result.data.messages)
-            setFromUser(result.data.messages[0].fromUser.username)
+            localStorage.setItem("username", result.data.username)
+            setMessages(result.data.posts)
+            setFromUser(result.data.posts)
             return result;
         } catch (error) {
             console.log(error);
@@ -20,25 +25,23 @@ const Messages = () => {
             receiveMessages();
         }, [])
         
-        return (
-            <div>
-                {/* {
-                    
-        Messages.length ? Messages.map ((message, idx) => {
         return(
-            
-            <div>
-                <h1>Messages</h1>
-                <h2>{`From: ${fromUser}`}</h2>
-                <h2>{`Message: ${Messages}`}</h2>
-            </div>
-        )
-        }) : <h1>No Messages</h1>
-        } */}
-        </div>
-        )
-        }
-
-    
+            <div id="all-messages">
+                    <h1>All Messages</h1>
+                    {
+                        Messages.length ? Messages.map((message, idx) =>{
+                            {console.log(message.messages)}
+                           return (
+                            <div key={idx}>
+                            </div>
+                            )
+                        }) : <h1>No Messages</h1>
+                    }
+                    <button onClick={() => Logout()}>Logout</button>
+                    <Link to="/">Go back</Link>
+                </div>
+                
+            )
+}
 
 export default Messages;

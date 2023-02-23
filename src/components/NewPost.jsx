@@ -11,7 +11,6 @@ function NewPost() {
     try {
       console.log("you have posted a new post", newTitle, newDescription, newPrice);
       const result = await createNewPost(newTitle, newDescription, newPrice);
-      localStorage.setItem(result.data.token);
       setNewTitle('');
       setNewDescription('');
       setNewPrice('');

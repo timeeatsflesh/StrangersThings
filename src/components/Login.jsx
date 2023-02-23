@@ -9,6 +9,7 @@ function Login() {
 
   function Logout() {
     localStorage.removeItem(token)
+    localStorage.removeItem("username")
   }
 
   async function sendLogin(username, password) {
