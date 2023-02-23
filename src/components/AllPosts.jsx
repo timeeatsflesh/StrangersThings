@@ -22,14 +22,15 @@ const AllPosts = () => {
     return(
     <div id="all-posts">
             <h1>All posts</h1>
-            <Link to="/NewPost"><button>Post new article</button></Link>
+            <Link to="/new-post"><button>Post new article</button></Link>
+            <Link to="/create-message"><button>Ask Seller</button></Link>
             {
                 posts.length ? posts.map((post, idx) =>{
                    return (
                     <div key={idx}>
                         <h3>{post.title}</h3>
                         <p>{post.description}</p>
-                        {/* <Link to={`${post.id}`}><h3>{post.title}</h3></Link> */}
+                        <Link to="/create-message"><button>Ask Seller</button></Link>
                     </div>
                     )
                 }) : null

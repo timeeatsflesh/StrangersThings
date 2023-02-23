@@ -96,3 +96,23 @@ export const getMessages = async () => {
 		console.log(error);
 	}
 }
+export const sendMessage = async () => {
+ try {
+	let response = await fetch(`${BASE_URL}/posts/${POST_ID}/messages`, {
+  method: "POST",
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${localStorage.getItem("token")}`
+  },
+  body: JSON.stringify({
+    message: {
+      content: content
+    }
+  })
+})	
+const result = await response.json();
+return result;
+} catch (error) {
+console.log(error);
+}
+}
