@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const Messages = () => {
     const [Messages, setMessages] = useState({})
-    const [fromUser, setFromUser] = useState('')
-
+    const [username, setUserName] = useState('')
+    
     function Logout() {
         localStorage.removeItem("username")
       }
@@ -14,8 +14,8 @@ const Messages = () => {
         try{
             const result = await getMessages();
             localStorage.setItem("username", result.data.username)
-            setMessages(result.data.posts)
-            setFromUser(result.data.posts)
+            setMessages(result.data.messages)
+            setUserName(result.data.username)
             return result;
         } catch (error) {
             console.log(error);
@@ -24,7 +24,14 @@ const Messages = () => {
         useEffect(() => {
             receiveMessages();
         }, [])
-        
+        console.log(Messages, username)
+        const messagesSentToMe = Messages?.filter ((message) => {
+            if (message.fromUser.username != username) {
+                return true
+            } else {
+                return false
+            }
+        }) 
         return(
             <div id="all-messages">
                     <h1>All Messages</h1>
