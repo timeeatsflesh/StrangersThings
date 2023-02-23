@@ -6,6 +6,10 @@ export const getFakePosts =  async () => {
     try{
         const response = await fetch(`${BASE_URL}/posts`, {
             method: "GET",
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${localStorage.getItem("token")}`
+			  },
         });
         const result = await response.json();
         const posts = result.data.posts
@@ -96,7 +100,7 @@ export const getMessages = async () => {
 		console.log(error);
 	}
 }
-export const sendMessage = async () => {
+export const sendMessage = async (POST_ID, content) => {
  try {
 	let response = await fetch(`${BASE_URL}/posts/${POST_ID}/messages`, {
   method: "POST",

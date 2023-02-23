@@ -1,18 +1,17 @@
 import React, {useState} from "react";
 import { sendMessage } from "../api-adapter";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 
 
 function CreateMessage() {
     let [message, setMessage] = useState("");
-    
+    let { id } = useParams(); 
   
-    async function createNewMessage(message) {
+    async function createNewMessage( id, message ) {
       try {
-        console.log("you have created a new message", message);
-        const result = await sendMessage(message);
-        localStorage.setItem(result.data.token);
+        console.log("you have created a new message:", id,  message);
+        const result = await sendMessage(id, message);
         setMessage('');
       } catch (error) {
         console.log(error);
@@ -22,7 +21,7 @@ function CreateMessage() {
             <form
               onSubmit={(event) => {
                 event.preventDefault();
-                createNewMessage(message);
+                createNewMessage(id, message);
               }}
             >
               <label>
@@ -30,7 +29,7 @@ function CreateMessage() {
                 <input
                   name="message"
                   type="text"
-                  value={setMessage}
+                  value={message}
                   onChange={(event) => {
                     setMessage(event.target.value);
                   }}

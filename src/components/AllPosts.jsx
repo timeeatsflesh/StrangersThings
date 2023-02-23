@@ -18,7 +18,7 @@ const AllPosts = () => {
         useEffect(() => {
             getPosts();
         }, [])
-
+console.log(posts)  
     return(
     <div id="all-posts">
             <h1>All posts</h1>
@@ -30,7 +30,7 @@ const AllPosts = () => {
                     <div key={idx}>
                         <h3>{post.title}</h3>
                         <p>{post.description}</p>
-                        <Link to="/create-message"><button>Ask Seller</button></Link>
+                        <Link to={`/create-message/${post._id}`}><button>Ask Seller</button></Link>
                     </div>
                     )
                 }) : null
