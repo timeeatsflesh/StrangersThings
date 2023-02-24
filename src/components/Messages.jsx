@@ -8,10 +8,6 @@ const Messages = () => {
 
   // let messagesSentToMe = ""
 
-  function Logout() {
-    localStorage.removeItem("username");
-  }
-
   const receiveMessages = async () => {
     try {
       const result = await getMessages();
@@ -26,7 +22,6 @@ const Messages = () => {
   useEffect(() => {
     receiveMessages();
   }, []);
-  
   const messagesSentToMe = Messages.length ? Messages?.filter((message) => {
   return message.fromUser.username !== username;
   }) : []

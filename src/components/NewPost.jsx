@@ -26,7 +26,6 @@ function NewPost() {
 
   return (
     <form className="form">
-      onSubmit=
       {(event) => {
         event.preventDefault();
         sendNewPost(newTitle, newDescription, newPrice);

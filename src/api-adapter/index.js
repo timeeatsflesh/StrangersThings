@@ -1,8 +1,6 @@
 const BASE_URL = "https://strangers-things.herokuapp.com/api/2301-ftb-et-web-ft"
 
 export const getFakePosts =  async () => {
-
-    
     try{
         const response = await fetch(`${BASE_URL}/posts`, {
             method: "GET",
@@ -120,3 +118,20 @@ return result;
 console.log(error);
 }
 }
+
+export const deletePost = async (POST_ID) => {
+    try {
+      const response = await fetch(`${BASE_URL}/posts/${POST_ID}`, {
+        method: "DELETE",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem("token")}`
+        }
+      });
+      const result = await response.json();
+      console.log(result);
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+  }
