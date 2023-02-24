@@ -25,7 +25,7 @@ const AllPosts = () => {
             {
                 // console.log(Boolean(localStorage.getItem("token")))
             //    localStorage.getItem("token", result) ? :
-            // <Link to="/new-post"><button>Post new article</button></Link>
+            <Link to="/new-post"><button>Post new article</button></Link>
             }
             {
                 posts.length ? posts.map((post, idx) =>{
