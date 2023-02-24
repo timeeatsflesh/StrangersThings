@@ -29,7 +29,8 @@ const Messages = () => {
   console.log(Messages, username);
 
   const messagesSentToMe =Messages.length ? Messages?.filter((message) => {
-    return message.fromUser.username !== username;
+    return message.fromUser.username !== username
+    
   })
   : null
   
@@ -48,12 +49,7 @@ const Messages = () => {
   return (
     <div id="all-messages">
       <h1>All Messages</h1>
-      {
-            
-            
-            }
-        
- </div>
+   </div>
   )}
 
 
