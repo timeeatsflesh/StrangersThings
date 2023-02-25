@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { getFakePosts } from '../api-adapter';
+import { getFakePosts, getSearchResults } from '../api-adapter';
 
 function SearchBar() {
   const [search, setSearch] = useState('');
@@ -7,16 +7,16 @@ function SearchBar() {
 
   const handleSearch = async () => {
     try {
-      const response = await fetch(getFakePosts(search));
+      const response = await fetch(getSearchResults());
       const data = await response.json();
       setSearch(data);
     } catch (error) {
-      console.error(error);
+      console.error(error)
     }
   };
 
   const handleInputChange = (event) => {
-    setQuery(event.target.value);
+    setSearch(event.target.value);
     const filteredResults = results.filter((result) =>
       result.title.toLowerCase().includes(event.target.value.toLowerCase())
     );
