@@ -19,10 +19,16 @@ const AllPosts = () => {
             console.log(error);
         }
     }
+
+    function setToken(){
+        localStorage.setItem("token", undefined)
+    }
+
         useEffect(() => {
-            getPosts();
+            getPosts(),setToken() ;
         }, [])
 
+        
         posts.length ? posts.map((post)=> { 
             return(
             postMatches(post, searchTerm)

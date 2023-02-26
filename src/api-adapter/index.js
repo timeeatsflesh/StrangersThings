@@ -135,20 +135,3 @@ export const deletePost = async (POST_ID) => {
       console.error(err);
     }
   }
-
-  // export const getSearchResults = async (search) => {
-  //   try {
-  //     const response = await fetch(`${BASE_URL}/posts?q=${search}`, {
-  //       method: "GET",
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //         'Authorization': `Bearer ${localStorage.getItem("token")}`
-  //       },
-  //     });
-  //     const result = await response.json();
-  //     const posts = result.data.posts
-  //     return posts;
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
