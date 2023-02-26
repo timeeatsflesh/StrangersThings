@@ -22,6 +22,8 @@ const AllPosts = () => {
             getPosts();
         }, [])
 
+        console.log(posts)
+
         posts.length ? posts.map((post)=> { 
             return(
             postMatches(post, searchTerm)
