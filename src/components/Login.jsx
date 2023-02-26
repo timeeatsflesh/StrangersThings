@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { sendUser } from '../api-adapter';
 import { Link } from 'react-router-dom';
-import { Status } from './'
 
 function Login() {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
 
   function Logout() {
-    localStorage.removeItem(token)
+    localStorage.setItem("token", "testToken")
     localStorage.removeItem("username")
   }
 

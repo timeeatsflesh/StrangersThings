@@ -8,7 +8,7 @@ const AllPosts = () => {
     const [posts, setPosts] = useState([])
     const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
     const postsToDisplay = searchTerm.length ? filteredPosts : posts;
-    const  token = localStorage.getItem("token")
+    const token = localStorage.getItem("token")
 
     const getPosts =  async () => {
         try{
@@ -20,12 +20,8 @@ const AllPosts = () => {
         }
     }
 
-    function setToken(){
-        localStorage.setItem("token", undefined)
-    }
-
         useEffect(() => {
-            getPosts(),setToken() ;
+            getPosts();
         }, [])
 
         
@@ -35,14 +31,19 @@ const AllPosts = () => {
             )
         }):null
 
+
         function showPostButton(){
-            if(token.length <= 9){
-                return null
-            }else{
-                return <Link to="/new-post"><button id ="postNewArticleButton">Post new article</button></Link>
+            if(token){ 
+                if(token.length <= 9){
+                    return null
+                }else{
+                    return <Link to="/new-post"><button id ="postNewArticleButton">Post new article</button></Link>
             }
         }
+        }
          
+        console.log(token)
+
         function postMatches(post, searchTerm) {
             return post.title.toLowerCase().includes(searchTerm.toLowerCase())
         }
@@ -69,7 +70,7 @@ const AllPosts = () => {
                                         <h2>{post.author.username}</h2> 
                                         <p>{post.description}</p>
                                         {
-                                            token.length <= 9 ?  null : <Link to={`/create-message/${post._id}`}><button id="askSellerButton">Ask Seller</button></Link>
+                                            token ? token.length <= 9 ?  null : <Link to={`/create-message/${post._id}`}><button id="askSellerButton">Ask Seller</button></Link>: null
                                         } 
                                         {
                                             post.isAuthor === true?
