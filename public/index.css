@@ -54,8 +54,20 @@ body {
     font-weight: 900;
   }
   #postNewArticleButton{
-    display: all;
+    margin-left: 5%;
   }
 .postInAllPosts{
-  border: 1px solid black;
+  border-bottom: solid black;
+  padding-bottom: 25px;
+  margin-left: 5%;
+  margin-right: 5%;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#linkBox {
+display: flex;
+justify-content: space-between;
+padding: 1rem;
+border-bottom: solid black;
+width: 350px;
 }

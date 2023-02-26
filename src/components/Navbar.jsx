@@ -6,11 +6,11 @@ const Navbar = () => {
   return (
     <div id="navbar">
       <h2> Stranger's Things</h2>
-      <div id="Login/Register">
-      <Link to="/">Home</Link>
-      <Link to="/messages">Messages</Link>
-      <Link to="/register">Sign Up/</Link>
-      <Link to="/login">Login</Link>
+      <div id="linkBox">
+        <Link to="/"><button>Home</button></Link>
+        <Link to="/messages"><button>Messages</button></Link>
+        <Link to="/register"><button>Sign Up</button></Link>
+        <Link to="/login"><button>Login</button></Link>
       </div>
     </div>
   );

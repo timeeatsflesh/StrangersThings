@@ -36,14 +36,6 @@ const AllPosts = () => {
                 return <Link to="/new-post"><button id ="postNewArticleButton">Post new article</button></Link>
             }
         }
-
-        function showAskbutton(){
-            if(token.length <= 9){
-                return null
-            }else{
-                return <Link to={`/create-message/${post._id}`}><button id="askSellerButton">Ask Seller</button></Link>
-            }
-        }
          
         function postMatches(post, searchTerm) {
             return post.title.toLowerCase().includes(searchTerm.toLowerCase())
