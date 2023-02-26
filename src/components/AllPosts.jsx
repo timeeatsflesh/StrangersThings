@@ -22,8 +22,6 @@ const AllPosts = () => {
             getPosts();
         }, [])
 
-        console.log(posts)
-
         posts.length ? posts.map((post)=> { 
             return(
             postMatches(post, searchTerm)
@@ -51,6 +49,7 @@ const AllPosts = () => {
                             <Link to="/new-post"><button>Post new article</button></Link>
                             {
                                 postsToDisplay.length ? postsToDisplay.map((post, idx)=> { 
+                                    console.log(post)
                                     return(
                                     <div key ={`idx: ${idx}`}>
                                         <h1>{post.title}</h1>
