@@ -56,3 +56,6 @@ body {
   #postNewArticleButton{
     display: all;
   }
+.postInAllPosts{
+  border: 1px solid black;
+}

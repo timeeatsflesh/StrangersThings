@@ -6,8 +6,6 @@ const Messages = () => {
   const [Messages, setMessages] = useState([]);
   const [username, setUserName] = useState("");
 
-  // let messagesSentToMe = ""
-
   const receiveMessages = async () => {
     try {
       const result = await getMessages();

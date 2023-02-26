@@ -66,14 +66,13 @@ const AllPosts = () => {
                             {
                                 postsToDisplay.length ? postsToDisplay.map((post, idx)=> { 
                                     return(
-                                    <div key ={`idx: ${idx}`}>
+                                    <div class="postInAllPosts" key ={`post: ${idx}`}>
                                         <h1>{post.title}</h1>
                                         <h2>{post.author.username}</h2> 
                                         <p>{post.description}</p>
                                         {
                                             token.length <= 9 ?  null : <Link to={`/create-message/${post._id}`}><button id="askSellerButton">Ask Seller</button></Link>
-                                        }
-                                        
+                                        } 
                                         {
                                             post.isAuthor === true?
                                             <button id = "DELETE_BUTTON" onClick={() => deletePost(post._id)}>DELETE</button>
