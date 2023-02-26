@@ -27,7 +27,6 @@ const AllPosts = () => {
             postMatches(post, searchTerm)
             )
         }):null
-        
          
         function postMatches(post, searchTerm) {
             return post.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -46,16 +45,17 @@ const AllPosts = () => {
                         }}/>
                     </label>
                         <div>
-                            <Link to="/new-post"><button>Post new article</button></Link>
+                            {
+                               localStorage.getItem("token") !== undefined ?<Link to="/new-post"><button id ="postNewArticleButton">Post new article</button></Link>:null
+                            }
                             {
                                 postsToDisplay.length ? postsToDisplay.map((post, idx)=> { 
-                                    console.log(post)
                                     return(
                                     <div key ={`idx: ${idx}`}>
                                         <h1>{post.title}</h1>
                                         <h2>{post.author.username}</h2>
                                         <p>{post.description}</p>
-                                        <Link to={`/create-message/${post._id}`}><button>Ask Seller</button></Link>
+                                        <Link to={`/create-message/${post._id}`}><button id="askSellerButton">Ask Seller</button></Link>
                                         {
                                             post.isAuthor === true?
                                             <button id = "DELETE_BUTTON" onClick={() => deletePost(post._id)}>DELETE</button>
