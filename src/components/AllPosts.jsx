@@ -4,7 +4,10 @@ import { Link } from "react-router-dom"
 
 
 const AllPosts = () => {
+    const [searchTerm, setSearchTerm] = useState('');
     const [posts, setPosts] = useState([])
+    const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
+    const postsToDisplay = searchTerm.length ? filteredPosts : posts;
 
     const getPosts =  async () => {
         try{
@@ -19,35 +22,53 @@ const AllPosts = () => {
             getPosts();
         }, [])
 
-    return(
-    <div id="all-posts">
-            <h1>All posts</h1>
-            {
-                // console.log(Boolean(localStorage.getItem("token")))
-            //    localStorage.getItem("token", result) ? :
-            <Link to="/new-post"><button>Post new article</button></Link>
-            }
-            {
-                posts.length ? posts.map((post, idx) =>{
-                   return (
-                    <div key={idx}>
-                        <h3>{post.title}</h3>
-                        <p>{post.description}</p>
-                        <Link to={`/create-message/${post._id}`}><button>Ask Seller</button></Link>
-                        {
-                            post.isAuthor === true?
-                            <button id = "DELETE_BUTTON" onClick={() => deletePost(post._id)}
-                            
-                            >DELETE</button>
-                            :null
-                        }
-                        
-                    </div>
-                    )
-                }) : null
-            }
-        </div>
-    )
-
+        posts.length ? posts.map((post)=> { 
+            return(
+            postMatches(post, searchTerm)
+            )
+        }):null
+        
+         
+        function postMatches(post, searchTerm) {
+            return post.title.toLowerCase().includes(searchTerm.toLowerCase())
+        }
+    
+            return (
+                <div>
+                    <label>
+                        Search:
+                    <input
+                        name="searchTerm"
+                        type="text"
+                        value={searchTerm}
+                        onChange={(event) => {
+                            setSearchTerm(event.target.value);
+                        }}/>
+                    </label>
+                        <div>
+                            <Link to="/new-post"><button>Post new article</button></Link>
+                            {
+                                postsToDisplay.length ? postsToDisplay.map((post, idx)=> { 
+                                    return(
+                                    <div key ={`idx: ${idx}`}>
+                                        <h1>{post.title}</h1>
+                                        <h2>{post.author.username}</h2>
+                                        <p>{post.description}</p>
+                                        <Link to={`/create-message/${post._id}`}><button>Ask Seller</button></Link>
+                                        {
+                                            post.isAuthor === true?
+                                            <button id = "DELETE_BUTTON" onClick={() => deletePost(post._id)}>DELETE</button>
+                                            :null
+                                        }
+                                    </div>
+                                    )
+                                }):null
+                            }       
+                        </div>
+                </div>
+            )
 }
+
 export default AllPosts
+
+

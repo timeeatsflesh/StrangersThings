@@ -1,5 +1,5 @@
 import React, { useState,useEffect } from 'react';
-import { getFakePosts, getSearchResults } from '../api-adapter';
+import { getFakePosts } from '../api-adapter';
 
 function SearchBar() {
   const [searchTerm, setSearchTerm] = useState('');
