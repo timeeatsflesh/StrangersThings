@@ -8,7 +8,7 @@ const Navbar = () => {
       <h2> Stranger's Things</h2>
       <div id="linkBox">
         <Link to="/"><button>Home</button></Link>
-        <Link to="/messages"><button>Messages</button></Link>
+        <Link to="/profile"><button>profile</button></Link>
         <Link to="/register"><button>Sign Up</button></Link>
         <Link to="/login"><button>Login</button></Link>
       </div>

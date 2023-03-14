@@ -16,7 +16,7 @@ const router = createBrowserRouter(
 			<Route path="login" element={<Login />} />
 			<Route path="register" element={<Register />} />
 			<Route path="new-post" element={<NewPost/>} />
-			<Route path="messages" element={<Messages/>} />
+			<Route path="profile" element={<Messages/>} />
 			<Route path="create-message/:id" element={<CreateMessage/>} />
 		</Route>
 	)
