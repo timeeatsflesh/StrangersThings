@@ -1,14 +1,27 @@
 import React, { useState } from 'react';
 import { sendUser } from '../api-adapter';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 
 function Login() {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
+  const token = localStorage.getItem("token")
 
   function Logout() {
     localStorage.setItem("token", "testToken")
     localStorage.removeItem("username")
+  }
+  function checkForToken(){
+    setTimeout(() => {
+      let navigate = useNavigate(); 
+      const routeChange = () =>{ 
+        let path = `http://localhost:3000`; 
+        navigate(path);
+      }
+      if(token.length <= 9){
+        routeChange()
+      }
+    }, "1000");
   }
 
   async function sendLogin(username, password) {
@@ -51,9 +64,9 @@ function Login() {
           }}
         />
       </label>
-      <button type="submit">Login</button>
+      
       <label>
-        
+        <button onClick={() => checkForToken()} type="submit">Login</button>
       </label>
       <button onClick={() => Logout()}>Logout</button>
       <Link to="/">Go back</Link>
