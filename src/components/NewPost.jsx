@@ -26,11 +26,12 @@ function NewPost() {
   }
 
   return (
-    <form className="form">
-      {(event) => {
-        event.preventDefault();
-        sendNewPost(newTitle, newDescription, newPrice);
-      }}
+    <form className="form"
+    onSubmit={(event) => {
+      event.preventDefault();
+      sendNewPost(newTitle, newDescription, newPrice);
+    }}
+    >
       
       <label>
         Title:

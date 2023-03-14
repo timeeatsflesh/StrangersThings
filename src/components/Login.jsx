@@ -6,14 +6,13 @@ function Login() {
   let [username, setUsername] = useState("");
   let [password, setPassword] = useState("");
   const token = localStorage.getItem("token")
-
+  let navigate = useNavigate();
+  
   function Logout() {
     localStorage.setItem("token", "testToken")
     localStorage.removeItem("username")
   }
   function checkForToken(){
-    setTimeout(() => {
-      let navigate = useNavigate(); 
       const routeChange = () =>{ 
         let path = `http://localhost:3000`; 
         navigate(path);
@@ -21,7 +20,6 @@ function Login() {
       if(token.length <= 9){
         routeChange()
       }
-    }, "1000");
   }
 
   async function sendLogin(username, password) {
@@ -40,6 +38,7 @@ function Login() {
       onSubmit={(event) => {
         event.preventDefault();
         sendLogin(username, password);
+        navigate("/");
       }}
     >
       <label>
@@ -66,7 +65,7 @@ function Login() {
       </label>
       
       <label>
-        <button onClick={() => checkForToken()} type="submit">Login</button>
+        <button type="submit">Login</button>
       </label>
       <button onClick={() => Logout()}>Logout</button>
       <Link to="/">Go back</Link>
