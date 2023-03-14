@@ -19,6 +19,7 @@ function NewPost() {
       setNewTitle("");
       setNewDescription("");
       setNewPrice("");
+      return result
     } catch (error) {
       console.log(error);
     }
@@ -45,7 +46,7 @@ function NewPost() {
       <label>
         Description:
         <input
-          name="Description"
+          name="description"
           type="text"
           value={newDescription}
           onChange={(event) => {
@@ -56,7 +57,7 @@ function NewPost() {
       <label>
         Price:
         <input
-          name="Price"
+          name="price"
           type="text"
           value={newPrice}
           onChange={(event) => {

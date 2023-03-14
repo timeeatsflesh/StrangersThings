@@ -3,15 +3,17 @@ import { getMessages } from "../api-adapter";
 import { Link } from "react-router-dom";
 
 const Messages = () => {
-  const [Messages, setMessages] = useState([]);
-  const [username, setUserName] = useState("");
+  // const [Messages, setMessages] = useState([]);
+  // const [username, setUserName] = useState("");
   const [posts, setPosts] = useState([])
+  const [status, setStatus] = useState("")
 
   const receiveMessages = async () => {
     try {
       const result = await getMessages();
-      setMessages(result.data.messages);
-      setUserName(result.data.username);
+      setStatus(result.data)
+      // setMessages(result.data.messages);
+      // setUserName(result.data.username);
       setPosts(result.data.posts)
       return result;
     } catch (error) {
@@ -22,14 +24,18 @@ const Messages = () => {
   useEffect(() => {
     receiveMessages();
   }, []);
-
-const activePosts = posts.length ? posts.filter((post)=>{return post.active === true}): []
-console.log(activePosts, " activePosts")
+if(!status){
+  return(
+    <div>
+      <h1>You need to login/register</h1>
+    </div>
+  ) 
+}else{
+  const activePosts = posts.length ? posts.filter((post)=>{return post.active === true}): []
 
 const activePostsMessages = activePosts.map((message)=>{
   return message.messages
 })
-console.log(activePostsMessages, " activePostsMessages")
 
 const message = activePostsMessages.map((message, idx)=>{
   return (
@@ -39,11 +45,12 @@ const message = activePostsMessages.map((message, idx)=>{
     </div>
   )
 })
-console.log(message," message")
 
 return(
   <div>{message}</div>
 )
 }
+}
+
 
 export default Messages

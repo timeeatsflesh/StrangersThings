@@ -41,8 +41,6 @@ const AllPosts = () => {
             }
         }
         }
-         
-        console.log(token)
 
         function postMatches(post, searchTerm) {
             return post.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -65,7 +63,7 @@ const AllPosts = () => {
                             {
                                 postsToDisplay.length ? postsToDisplay.map((post, idx)=> { 
                                     return(
-                                    <div class="postInAllPosts" key ={`post: ${idx}`}>
+                                    <div className="postInAllPosts" key ={`post: ${idx}`}>
                                         <h1>{post.title}</h1>
                                         <h2>{post.author.username}</h2> 
                                         <p>{post.description}</p>

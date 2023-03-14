@@ -64,24 +64,26 @@ export const newUser = async (newUsername, newPassword) => {
 };
 
 export const createNewPost = async (title, description, price) => {
-fetch(`${BASE_URL}/posts`, {
-  method: "POST",
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': `Bearer ${localStorage.getItem("token")}`
-  },
-  body: JSON.stringify({
-    post: {
-      title: title,
-      description: description,
-      price: price,
-    }
-  })
-}).then(response => response.json())
-  .then(result => {
-    console.log(result);
-  })
-  .catch(console.error);
+  try {
+    const response = await fetch(`${BASE_URL}/posts`, {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify({
+        post: {
+          title: title,
+          description: description,
+          price: price,
+        }
+      })
+    })
+    const result = await response.json();
+    console.log(result)
+  } catch (error) {
+    throw error;
+  }
 }
 
 export const getMessages = async () => {
