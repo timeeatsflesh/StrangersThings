@@ -12,15 +12,6 @@ function Login() {
     localStorage.setItem("token", "testToken")
     localStorage.removeItem("username")
   }
-  function checkForToken(){
-      const routeChange = () =>{ 
-        let path = `http://localhost:3000`; 
-        navigate(path);
-      }
-      if(token.length <= 9){
-        routeChange()
-      }
-  }
 
   async function sendLogin(username, password) {
     try {
@@ -28,6 +19,13 @@ function Login() {
       localStorage.setItem("token", result)
       setUsername('');
       setPassword('');
+      if(!result){
+        window.alert("username/password is wrong");
+        return false
+      }else{
+        navigate("/")
+        window.alert("you are signed in!");
+      }
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +36,6 @@ function Login() {
       onSubmit={(event) => {
         event.preventDefault();
         sendLogin(username, password);
-        navigate("/");
       }}
     >
       <label>
@@ -63,7 +60,6 @@ function Login() {
           }}
         />
       </label>
-      
       <label>
         <button type="submit">Login</button>
       </label>
@@ -72,5 +68,4 @@ function Login() {
     </form>
   );
 }
-
 export default Login;
