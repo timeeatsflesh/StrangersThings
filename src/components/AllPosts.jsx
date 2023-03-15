@@ -9,6 +9,22 @@ const AllPosts = () => {
     const filteredPosts = posts.filter(post => postMatches(post, searchTerm));
     const postsToDisplay = searchTerm.length ? filteredPosts : posts;
     const token = localStorage.getItem("token")
+    const deletePostHandler = async (id) => {
+        try {
+            await deletePost(id);
+            const postCopy = [...posts];
+            const filteredPosts = postCopy.filter((post) =>{
+                if(post._id !== id){
+                    return true
+                }else{
+                    return false
+                }
+            })
+            setPosts(filteredPosts)
+        } catch (error) {
+            throw error;
+        }
+    }
 
     const getPosts =  async () => {
         try{
@@ -72,7 +88,7 @@ const AllPosts = () => {
                                         } 
                                         {
                                             post.isAuthor === true?
-                                            <button id = "DELETE_BUTTON" onClick={() => deletePost(post._id)}>DELETE</button>
+                                            <button id = "DELETE_BUTTON" onClick={() => deletePostHandler(post._id)}>DELETE</button>
                                             :null
                                         }
                                     </div>
